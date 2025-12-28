@@ -1,0 +1,1829 @@
+/* =====================================================
+   RESET E CONFIGURAÇÃO BASE
+   -----------------------------------------------------
+   Remove estilos padrão do navegador (margem e padding)
+   e define box-sizing como border-box para facilitar
+   o cálculo de larguras e alturas em todo o layout.
+===================================================== */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: scroll;
+    /*Overflow-y reserva o espaço para o scroll do nvegador assim o nav bar não ira mudar de tamanho e nem de posição.*/
+
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+
+/* =====================================================
+   LOGO / HEADER FIXO
+   -----------------------------------------------------
+   Cabeçalho superior fixo responsável pela identidade
+   visual da aplicação. Permanece visível em todas
+   as telas durante a navegação.
+===================================================== */
+.container_logo {
+    position: fixed;
+    /* Fixa o header no topo da tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa toda a largura da viewport */
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente o conteúdo */
+    align-items: center;
+    /* Centraliza verticalmente o conteúdo */
+    padding: 0.3rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Sombra leve para separação visual */
+    background-color: #fff;
+    z-index: 1000;
+    /* Garante que fique acima do conteúdo */
+}
+
+/* Container do conjunto de ícones da logo */
+.logo {
+    margin-right: 1%;
+    /* Espaço entre a logo e o texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Necessário para posicionar o coração */
+}
+
+/* Ícone principal (livro) da logo */
+#book_logo {
+    font-size: 35px;
+    color: #fb3939;
+}
+
+/* Ícone secundário (coração) sobreposto ao livro */
+#heart_logo {
+    font-size: 20px;
+    position: absolute;
+    /* Sobreposição em relação ao ícone do livro */
+    right: -6px;
+    bottom: -4px;
+    color: #ff002b;
+}
+
+/* Parte neutra do título */
+.titulo_normal {
+    font-weight: 600;
+}
+
+/* Parte colorida do título para destaque da marca */
+.titulo_color {
+    color: #fb3939;
+    margin-left: 4px;
+}
+
+/* =====================================================
+   NAVBAR FIXA (RODAPÉ)
+   Estilização da barra de navegação fixa na parte inferior da tela
+===================================================== */
+
+/* Container principal da navbar */
+.container_nav {
+    /* Mantém a navbar fixa na tela, independente do scroll */
+    position: fixed;
+
+    /* Posiciona a navbar no rodapé da página */
+    bottom: 0;
+    left: 0;
+
+    /* Faz a navbar ocupar toda a largura da tela */
+    width: 100%;
+
+    /* Espaçamento interno vertical */
+    padding: 0.5rem 0;
+
+    /* Cor de fundo branca */
+    background-color: #fff;
+
+    /* Sombra para dar destaque visual e separação do conteúdo */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+    /* Usa flexbox para alinhar os itens */
+    display: flex;
+
+    /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+
+    /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+
+    /* Garante que a navbar fique acima de outros elementos */
+    z-index: 1000;
+}
+
+/* Wrapper da lista de itens da navbar */
+.itens_nav {
+    /* Define que a lista ocupará metade da largura da navbar */
+    width: 50%;
+}
+
+/* Lista de navegação */
+.itens_nav ul {
+    /* Exibe os itens da lista em linha (horizontalmente) */
+    display: flex;
+
+    /* Distribui os itens igualmente no espaço disponível */
+    justify-content: space-around;
+}
+
+/* Item individual da lista */
+.itens_nav ul li {
+    /* Remove o marcador padrão da lista */
+    list-style: none;
+
+    /* Cor padrão dos itens */
+    color: #7F7F7F;
+
+    /* Usa flexbox para alinhar ícone e texto em coluna */
+    display: flex;
+    flex-direction: column;
+
+    /* Centraliza os elementos horizontalmente */
+    align-items: center;
+
+    /* Indica que o item é clicável */
+    cursor: pointer;
+
+    /* Anima a mudança de cor suavemente */
+    transition: color 0.3s ease;
+}
+
+/* Estilo aplicado quando o usuário passa o mouse sobre o item */
+.itens_nav ul li:hover {
+    /* Altera a cor para destacar o item ativo */
+    color: #000;
+}
+
+/* Estilização do ícone da navbar */
+.icon_nav {
+    /* Define o tamanho fixo do ícone */
+    width: 40px;
+    height: 40px;
+
+    /* Centraliza o conteúdo do ícone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Anima mudanças de fundo e borda suavemente */
+    transition: background-color 0.3s, border-radius 0.3s;
+}
+
+
+/* =====================================================
+   ITEM ATIVO
+   Estilização aplicada ao item de navegação atualmente selecionado
+===================================================== */
+
+/* Classe responsável por destacar o item ativo */
+.ativo {
+    /* Define a cor principal do texto do item ativo */
+    /* !important garante que essa cor sobrescreva outras regras */
+    color: #fb3939 !important;
+}
+
+/* Estilização do ícone quando o item está ativo */
+.ativo .icon_nav {
+    /* Aplica um fundo semitransparente para destacar o ícone */
+    background-color: #e86d5430;
+
+    /* Deixa o fundo do ícone em formato circular */
+    border-radius: 50%;
+}
+
+/* Estilização específica do elemento <i> (ícone de fonte) dentro do item ativo */
+.ativo i {
+    /* Garante que o ícone herde a cor do estado ativo */
+    /* !important evita conflitos com estilos globais de ícones */
+    color: #fb3939 !important;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Tablets e notebooks menores */
+@media (max-width: 1024px) {
+    .itens_nav {
+        width: 70%;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .itens_nav {
+        width: 85%;
+    }
+
+    .icon_nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .itens_nav ul li span {
+        font-size: 0.8rem;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .itens_nav {
+        width: 100%;
+    }
+
+    .container_nav {
+        padding: 0.3rem 0;
+    }
+
+    .icon_nav {
+        width: 32px;
+        height: 32px;
+    }
+
+    .itens_nav ul li span {
+        font-size: 0.7rem;
+    }
+}
+
+/* =====================================================
+   CONTAINERS PRINCIPAIS (TELAS)
+   Estrutura base das telas principais da aplicação
+===================================================== */
+
+/* Container padrão das telas */
+.container {
+    /* Faz o container ocupar toda a largura disponível */
+    width: 100%;
+
+    /* Garante que o container não ultrapasse a largura da viewport */
+    max-width: 100vw;
+
+    /* Evita rolagem horizontal indesejada */
+    overflow-x: hidden;
+
+    /* Espaçamento superior para não sobrepor a navbar superior */
+    padding-top: 80px;
+
+    /* Espaçamento inferior para não sobrepor a navbar fixa do rodapé */
+    padding-bottom: 60px;
+
+    /* Oculta o container por padrão */
+    display: none;
+
+    /* Define layout em coluna para os elementos internos */
+    flex-direction: column;
+
+    /* Centraliza os elementos horizontalmente */
+    align-items: center;
+
+    /* Permite posicionamento relativo de elementos internos */
+    position: relative;
+
+    /* Habilita rolagem vertical apenas dentro do container */
+    overflow-y: auto;
+
+    /* Define a altura mínima real da tela,
+       descontando a altura da navbar superior e do rodapé */
+    min-height: calc(100vh - 80px - 60px);
+}
+
+/* Container visível */
+.container.exibida {
+    /* Exibe o container utilizando flexbox */
+    display: flex;
+}
+
+/* =====================================================
+   FEEDBACK VISUAL DE AÇÃO (LIKE / DISLIKE)
+   Ícones exibidos como resposta visual às ações do usuário
+===================================================== */
+
+/* Estilos comuns aos ícones de Like e Dislike */
+#like_icon,
+#dontlike_icon {
+    /* Posiciona os ícones de forma absoluta dentro do container pai */
+    position: absolute;
+
+    /* Centraliza verticalmente os ícones */
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* Mantém os ícones invisíveis por padrão */
+    opacity: 0;
+
+    /* Impede interação do usuário com os ícones */
+    pointer-events: none;
+
+    /* Anima suavemente a aparição e desaparecimento */
+    transition: opacity 0.15s ease;
+
+    /* Garante que os ícones fiquem acima de outros elementos */
+    z-index: 10;
+}
+
+/* ---------------------
+   Dislike
+--------------------- */
+
+/* Posicionamento horizontal do ícone de Dislike */
+#dontlike_icon {
+    /* Afasta o ícone da borda esquerda do container */
+    left: 11%;
+}
+
+/* Estilo do ícone de Dislike */
+#dontlike_icon i {
+    /* Tamanho grande para destaque visual */
+    font-size: 70px;
+
+    /* Cor vermelha para indicar ação negativa */
+    color: #ff0000;
+}
+
+/* ---------------------
+   Like
+--------------------- */
+
+/* Posicionamento horizontal do ícone de Like */
+#like_icon {
+    /* Afasta o ícone da borda direita do container */
+    right: 11%;
+}
+
+/* Estilo do ícone de Like */
+#like_icon i {
+    /* Tamanho grande para destaque visual */
+    font-size: 70px;
+
+    /* Cor verde para indicar ação positiva */
+    color: #00ff00;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Notebooks e tablets grandes */
+@media (max-width: 1024px) {
+    .container {
+        padding-top: 70px;
+        padding-bottom: 55px;
+    }
+
+    #like_icon i,
+    #dontlike_icon i {
+        font-size: 60px;
+    }
+
+    #like_icon {
+        right: 10%;
+    }
+
+    #dontlike_icon {
+        left: 10%;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .container {
+        padding-top: 65px;
+        padding-bottom: 55px;
+    }
+
+    #like_icon i,
+    #dontlike_icon i {
+        font-size: 50px;
+    }
+
+    #like_icon {
+        right: 8%;
+    }
+
+    #dontlike_icon {
+        left: 8%;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .container {
+        justify-content: center;
+        min-height: calc(100vh - 60px - 65px);
+    }
+
+    #like_icon i,
+    #dontlike_icon i {
+        font-size: 42px;
+    }
+
+    #like_icon {
+        right: 5%;
+    }
+
+    #dontlike_icon {
+        left: 5%;
+    }
+}
+
+/* =====================================================
+   CONTAINER MATCH
+   Container principal da tela de match
+===================================================== */
+
+/* Container que envolve toda a área de match */
+#containerMatch {
+    /* Faz o container ocupar toda a altura da viewport */
+    height: 100vh;
+}
+
+
+/* =====================================================
+   CARD DE MATCH (LIVRO ATUAL)
+   Card interativo exibindo o item atual para decisão
+===================================================== */
+
+/* Card principal do match */
+#box_match {
+    /* Permite posicionamento absoluto de elementos internos (ícones, overlays) */
+    position: relative;
+
+    /* Define a largura do card em relação à tela */
+    width: 50%;
+
+    /* Define a altura do card baseada na viewport */
+    height: 65vh;
+
+    /* Espaçamento interno do card */
+    padding: 1%;
+
+    /* Usa flexbox para organizar o conteúdo interno */
+    display: flex;
+
+    /* Distribui os elementos internos nas extremidades */
+    justify-content: space-between;
+
+    /* Cor de fundo do card */
+    background-color: #fff;
+
+    /* Bordas arredondadas para aparência de card */
+    border-radius: 16px;
+
+    /* Sombra sutil para destaque visual */
+    box-shadow: 0 0 5px rgba(62, 62, 62, 0.22);
+
+    /* Indica que o card é arrastável */
+    cursor: grab;
+
+    /* Evita que conteúdo ultrapasse os limites do card */
+    overflow: hidden;
+
+    /* Anima suavemente transformações (movimento, rotação) */
+    transition: transform 0.25s ease;
+
+    /* Permite apenas rolagem vertical, evitando conflitos com swipe horizontal */
+    touch-action: pan-y;
+}
+
+/* Estilo aplicado enquanto o card está sendo arrastado */
+#box_match.dragging {
+    /* Remove a animação para evitar atraso durante o drag */
+    transition: none;
+}
+
+/* Estilo aplicado quando o card está sendo clicado */
+#box_match:active {
+    /* Altera o cursor para indicar ação de arrastar ativa */
+    cursor: grabbing;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Notebooks e tablets grandes */
+@media (max-width: 1024px) {
+    #box_match {
+        width: 70%;
+        height: 60vh;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #box_match {
+        width: 90%;
+        height: 65vh;
+        padding: 1.5%;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    #box_match {
+        width: 95%;
+        height: 65vh;
+        padding: 2%;
+        border-radius: 14px;
+    }
+}
+
+
+/* =====================================================
+   IMAGEM DO LIVRO
+   Área responsável por exibir a capa do livro
+===================================================== */
+
+/* Container da imagem do livro */
+#img_box {
+    /* Define a largura da área da imagem em relação ao card */
+    width: 40%;
+
+    /* Faz a imagem ocupar toda a altura do card */
+    height: 100%;
+
+    /* Esconde partes da imagem que ultrapassem o container */
+    overflow: hidden;
+
+    /* Arredonda as bordas para manter o padrão visual do card */
+    border-radius: 16px;
+}
+
+/* Imagem da capa do livro */
+#img_box img {
+    /* Faz a imagem preencher completamente o container */
+    width: 100%;
+    height: 100%;
+
+    /* Ajusta a imagem sem distorção, cortando se necessário */
+    object-fit: cover;
+
+    /* Impede interações como arrastar ou selecionar a imagem */
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES DO LIVRO
+   Área textual com os dados e descrição do livro
+===================================================== */
+
+/* Container das informações do livro */
+#info {
+    /* Define a largura da área de informações */
+    width: 55%;
+
+    /* Ocupa toda a altura do card */
+    height: 100%;
+
+    /* Organiza os elementos em coluna */
+    display: flex;
+    flex-direction: column;
+
+    /* Cor padrão do texto */
+    color: #000;
+}
+
+/* Título do livro */
+#titulo_livro {
+    /* Espaçamento interno superior e lateral */
+    padding: 1rem 1rem 0.3rem;
+
+    /* Tamanho maior para destaque do título */
+    font-size: 1.5rem;
+}
+
+/* Metadados do livro (autor, ano, etc.) */
+.meta {
+    /* Espaçamento horizontal */
+    padding: 0 1rem;
+
+    /* Fonte menor para informações secundárias */
+    font-size: 0.85rem;
+
+    /* Leve transparência para hierarquia visual */
+    opacity: 0.8;
+
+    /* Alinha os itens horizontalmente */
+    display: flex;
+    align-items: center;
+}
+
+/* Separador visual entre metadados */
+.meta .dot {
+    /* Espaçamento lateral do separador */
+    margin: 0 6px;
+}
+
+/* Área de tags do livro */
+.tags {
+    /* Espaçamento interno */
+    padding: 0.5rem 1rem;
+
+    /* Exibe as tags em linha */
+    display: flex;
+
+    /* Espaçamento entre as tags */
+    gap: 8px;
+
+    /* Permite quebra de linha caso não caibam na mesma linha */
+    flex-wrap: wrap;
+}
+
+/* Estilo base das tags */
+.tag {
+    /* Espaçamento interno da tag */
+    padding: 4px 10px;
+
+    /* Bordas arredondadas */
+    border-radius: 20px;
+
+    /* Tamanho da fonte reduzido */
+    font-size: 0.75rem;
+
+    /* Peso médio para melhor leitura */
+    font-weight: 500;
+
+    /* Texto branco para contraste */
+    color: #fff;
+}
+
+/* Tag de gênero */
+.tag.genero {
+    /* Cor específica para gênero */
+    background-color: #6C63FF;
+}
+
+/* Tag de categoria */
+.tag.categoria {
+    /* Cor específica para categoria */
+    background-color: #00C896;
+}
+
+/* Descrição do livro */
+.descricao {
+    /* Ocupa o espaço restante do container */
+    flex: 1;
+
+    /* Espaçamento interno */
+    padding: 1rem;
+
+    /* Habilita rolagem vertical caso o texto seja longo */
+    overflow-y: auto;
+
+    /* Espaçamento entre linhas para melhor leitura */
+    line-height: 1.5;
+
+    /* Tamanho de fonte confortável para leitura */
+    font-size: 0.95rem;
+}
+
+
+/* =====================================================
+   BOTÕES DE AÇÃO
+   Botões de Like e Dislike
+===================================================== */
+
+/* Container dos botões */
+.buttons {
+    /* Espaçamento interno */
+    padding: 1rem;
+
+    /* Exibe os botões lado a lado */
+    display: flex;
+
+    /* Distribui os botões igualmente */
+    justify-content: space-around;
+}
+
+/* Estilo base dos botões circulares */
+.button_circle {
+    /* Dimensões fixas para formato circular */
+    width: 70px;
+    height: 70px;
+
+    /* Torna o botão perfeitamente circular */
+    border-radius: 50%;
+
+    /* Remove a borda padrão */
+    border: none;
+
+    /* Indica que o botão é clicável */
+    cursor: pointer;
+
+    /* Centraliza o ícone dentro do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botão de dislike */
+#notlike {
+    /* Cor vermelha para ação negativa */
+    background-color: red;
+
+    /* Cor do ícone */
+    color: #fff;
+}
+
+/* Ícone do botão de dislike */
+#notlike i {
+    /* Tamanho do ícone */
+    font-size: 40px;
+}
+
+/* Botão de like */
+#like {
+    /* Cor verde para ação positiva */
+    background-color: rgb(19, 223, 0);
+
+    /* Cor do ícone */
+    color: #fff;
+}
+
+/* Ícone do botão de like */
+#like i {
+    /* Tamanho do ícone */
+    font-size: 40px;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Notebooks e tablets grandes */
+@media (max-width: 1024px) {
+    #box_match {
+        width: 70%;
+        height: 60vh;
+    }
+
+    #titulo_livro {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #box_match {
+        width: 90%;
+        height: 65vh;
+    }
+
+    #img_box {
+        width: 38%;
+    }
+
+    #info {
+        width: 58%;
+    }
+
+    #titulo_livro {
+        font-size: 1.3rem;
+    }
+
+    .descricao {
+        font-size: 0.9rem;
+    }
+
+    .button_circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    #like i,
+    #notlike i {
+        font-size: 34px;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    #box_match {
+        width: 95%;
+        height: 70vh;
+        flex-direction: column;
+    }
+
+    #img_box {
+        width: 100%;
+        height: 45%;
+        border-radius: 16px 16px 0 0;
+    }
+
+    #info {
+        width: 100%;
+        height: 55%;
+    }
+
+    #titulo_livro {
+        font-size: 1.1rem;
+    }
+
+    .meta {
+        font-size: 0.75rem;
+    }
+
+    .descricao {
+        font-size: 0.85rem;
+    }
+
+    .buttons {
+        padding: 0.8rem;
+    }
+
+    .button_circle {
+        width: 55px;
+        height: 55px;
+    }
+
+    #like i,
+    #notlike i {
+        font-size: 28px;
+    }
+}
+
+/* =====================================================
+   FIM DA LISTA
+   -----------------------------------------------------
+   Card exibido quando não há mais livros disponíveis
+   para swipe (estado final do match).
+===================================================== */
+#box_end {
+    width: 30%;
+    /* Largura reduzida em relação ao card principal */
+    height: 65vh;
+    /* Altura consistente com o card de match */
+    display: none;
+    /* Visível apenas quando ativado via JS */
+    flex-direction: column;
+    justify-content: center;
+    /* Centraliza conteúdo verticalmente */
+    align-items: center;
+    /* Centraliza conteúdo horizontalmente */
+    gap: 1rem;
+    /* Espaçamento entre elementos */
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgba(62, 62, 62, 0.22);
+}
+
+/* Botão de reset da lista */
+#box_end button {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #fb3939;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes de layout e proporção para diferentes
+   tamanhos de tela, mantendo consistência visual.
+===================================================== */
+
+/* Notebooks e tablets grandes */
+@media (max-width: 1024px) {
+    #box_end {
+        width: 50%;
+        /* Aumenta a largura para melhor leitura */
+        height: 60vh;
+        /* Leve redução de altura */
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #box_end {
+        width: 80%;
+        /* Ocupa maior parte da tela */
+        height: 65vh;
+        /* Mantém proporção do card principal */
+    }
+
+    #box_end button {
+        font-size: 15px;
+        /* Texto levemente menor */
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    #box_end {
+        width: 95%;
+        /* Quase largura total da tela */
+        height: 70vh;
+        /* Mais área de toque no mobile */
+        border-radius: 14px;
+        /* Ajuste visual para telas pequenas */
+    }
+
+    #box_end button {
+        width: 100%;
+        /* Botão ocupa largura total */
+        max-width: 260px;
+        /* Evita botão exageradamente largo */
+        font-size: 14px;
+    }
+}
+
+/* =====================================================
+   ESTADOS GLOBAIS
+   -----------------------------------------------------
+   Ajustes aplicados quando a aplicação entra no
+   estado de fim de lista.
+===================================================== */
+.fim-lista #like_icon,
+.fim-lista #dontlike_icon {
+    opacity: 0 !important;
+    /* Garante que os ícones não apareçam */
+}
+
+/* =====================================================
+   BLOQUEIO DE SELEÇÃO (SWIPE)
+   -----------------------------------------------------
+   Impede seleção de texto durante gestos de arrastar
+   (mouse ou touch).
+===================================================== */
+#box_match,
+#box_match * {
+    user-select: none;
+    -webkit-user-select: none;
+    /* Compatibilidade com Safari */
+    -ms-user-select: none;
+    /* Compatibilidade com Edge antigo */
+}
+
+/* =====================================================
+   BIBLIOTECA - FILTROS
+   -----------------------------------------------------
+   Botões que alternam entre livros curtidos
+   e não curtidos.
+===================================================== */
+.select_buttons_filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+    /* Permite quebra em telas menores */
+}
+
+/* Estilo base dos botões de filtro */
+.select_buttons_filter button {
+    padding: 0.7rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.25s ease;
+    color: #444;
+}
+
+/* Ícone dentro do botão de filtro */
+.select_buttons_filter button i {
+    font-size: 1rem;
+}
+
+/* Estado selecionado padrão (Curtidos) */
+.select_buttons_filter .selecionado {
+    background-color: #f26b4f;
+    color: #fff;
+    border-color: #f26b4f;
+    box-shadow: 0 6px 16px rgba(242, 107, 79, 0.35);
+}
+
+/* Estado selecionado específico para "Não curtidos" */
+.select_buttons_filter button#filter_naocurtidos.selecionado {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* =====================================================
+   INPUT DE BUSCA
+   -----------------------------------------------------
+   Campo de pesquisa da biblioteca, permitindo
+   filtrar por título, autor ou categoria.
+===================================================== */
+.historico_pesquisa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    gap: 1.5rem;
+}
+
+/* Campo de texto da busca */
+.historico_pesquisa input {
+    width: 50%;
+    max-width: 400px;
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Feedback visual ao focar no input */
+.historico_pesquisa input:focus {
+    border-color: #f26b4f;
+}
+
+/* =====================================================
+   GRID DE CARDS DA BIBLIOTECA
+   -----------------------------------------------------
+   Exibição dos livros curtidos ou rejeitados
+   em formato de grade.
+===================================================== */
+#cards_resultados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto 4rem;
+    padding: 0 1rem;
+}
+
+/* =====================================================
+   CARD HISTÓRICO
+   -----------------------------------------------------
+   Card utilizado na biblioteca para exibir livros
+   curtidos ou rejeitados em formato de grid.
+===================================================== */
+.card_historico {
+    background-color: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Efeito visual ao passar o mouse sobre o card */
+.card_historico:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+/* Badge de categoria exibido sobre a imagem */
+.categoria_card {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Área reservada para ações futuras */
+.card_historico .acao {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Container da imagem do livro */
+.imagem_card {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+/* Imagem do livro */
+.imagem_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações textuais do livro */
+.main_info {
+    padding: 0.9rem 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+/* Título do livro */
+.titulo_livro_card {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Autor do livro */
+.autor_card {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes progressivos para tablets e mobile,
+   mantendo legibilidade e hierarquia visual.
+===================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    #cards_resultados {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .historico_pesquisa input {
+        width: 70%;
+    }
+}
+
+/* Tablets pequenos */
+@media (max-width: 768px) {
+    #cards_resultados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .historico_pesquisa input {
+        width: 85%;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    #cards_resultados {
+        grid-template-columns: 1fr;
+    }
+
+    .select_buttons_filter {
+        gap: 0.6rem;
+    }
+
+    .select_buttons_filter button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .imagem_card {
+        height: 200px;
+    }
+}
+
+
+/* =====================================================
+   CONTAINER PERFIL
+   -----------------------------------------------------
+   Tela de perfil do usuário, onde são exibidas
+   métricas e estatísticas.
+===================================================== */
+#containerPerfil {
+    width: 100%;
+    min-height: 100vh;
+    /* Garante ocupação total da tela */
+    padding-top: 90px;
+    /* Espaço para header fixo */
+    padding-bottom: 90px;
+    /* Espaço para navbar fixa */
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    background-color: #faf7f5;
+    /* Fundo neutro diferenciado */
+}
+
+
+/* =====================================================
+   CARD PADRÃO DO PERFIL
+   -----------------------------------------------------
+   Componente reutilizável para exibir dados
+   como categoria favorita, total de curtidas etc.
+===================================================== */
+.cards_perfil {
+    width: 90%;
+    max-width: 420px;
+    /* Limita largura em telas grandes */
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    /* Espaço entre ícone e texto */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =====================================================
+   CARD USUÁRIO (TOPO DO PERFIL)
+   -----------------------------------------------------
+   Primeiro card do perfil, normalmente contendo
+   avatar, nome e e-mail do usuário.
+   Recebe padding maior para destaque visual.
+===================================================== */
+.cards_perfil:first-child {
+    padding: 20px;
+    /* Aumenta o espaçamento interno do card principal */
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes progressivos para tablets e smartphones
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    #containerPerfil {
+        padding-top: 80px;
+        /* Reduz espaço do header */
+        padding-bottom: 80px;
+        /* Reduz espaço da navbar */
+        gap: 16px;
+        /* Menor espaçamento vertical */
+    }
+
+    .cards_perfil {
+        max-width: 380px;
+        padding: 15px;
+    }
+
+    .cards_perfil:first-child {
+        padding: 18px;
+    }
+}
+
+
+/* Smartphones */
+@media (max-width: 480px) {
+    #containerPerfil {
+        padding-top: 70px;
+        /* Header mobile */
+        padding-bottom: 80px;
+        /* Navbar mobile */
+        gap: 14px;
+    }
+
+    .cards_perfil {
+        width: 94%;
+        /* Aproveita melhor a largura */
+        max-width: 100%;
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .cards_perfil:first-child {
+        padding: 16px;
+    }
+}
+
+/* =====================================================
+   CÍRCULO DO USUÁRIO (AVATAR)
+   -----------------------------------------------------
+   Elemento circular que representa o usuário,
+   geralmente contendo iniciais ou ícone.
+===================================================== */
+.circle_user {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    /* Formato perfeitamente circular */
+    background: linear-gradient(135deg, #f26b5b, #f48c78);
+    /* Gradiente para destaque */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza conteúdo interno */
+    color: #fff;
+    /* Cor do ícone/texto */
+    font-size: 26px;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES DO USUÁRIO
+   -----------------------------------------------------
+   Container textual com nome e e-mail.
+===================================================== */
+#infoUsuario {
+    display: flex;
+    flex-direction: column;
+    /* Empilha nome e e-mail verticalmente */
+}
+
+/* Nome do usuário */
+#nameUser {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2933;
+    /* Cor primária do texto */
+}
+
+/* E-mail do usuário */
+#EmailUser {
+    font-size: 14px;
+    color: #7b8794;
+    /* Cor secundária */
+}
+
+
+/* =====================================================
+   ÍCONE DOS CARDS DE PERFIL
+   -----------------------------------------------------
+   Ícone circular usado nos cards de estatísticas
+   (ex: livros curtidos, categorias favoritas).
+===================================================== */
+.circle_icon_perfil {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    /* Botão circular */
+    background-color: #fdecea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f26b5b;
+    /* Cor de destaque */
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes para tablets e smartphones
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .circle_user {
+        width: 58px;
+        height: 58px;
+        font-size: 24px;
+    }
+
+    #nameUser {
+        font-size: 17px;
+    }
+
+    #EmailUser {
+        font-size: 13px;
+    }
+
+    .circle_icon_perfil {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .circle_user {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    #nameUser {
+        font-size: 16px;
+    }
+
+    #EmailUser {
+        font-size: 12.5px;
+    }
+
+    .circle_icon_perfil {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+}
+
+/* =====================================================
+   TEXTO DOS CARDS DE PERFIL
+   -----------------------------------------------------
+   Informações textuais associadas a cada card
+   de estatística do perfil.
+===================================================== */
+.informcoesUsuario {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título descritivo (ex: "Livros curtidos") */
+.titulo_infor {
+    font-size: 14px;
+    color: #7b8794;
+    /* Texto secundário */
+}
+
+/* Valor principal (ex: quantidade, categoria) */
+.informcoesUsuario p:last-child {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2933;
+}
+
+
+/* =====================================================
+   BOTÕES DE AÇÃO DO PERFIL
+   -----------------------------------------------------
+   Botões para resetar informações ou excluir conta.
+===================================================== */
+#resetarInfo,
+#excluirConta {
+    width: 90%;
+    max-width: 420px;
+    /* Alinha com largura dos cards */
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+/* Botão de resetar informações */
+#resetarInfo {
+    background-color: #fdecea;
+    color: #f26b5b;
+}
+
+/* Botão de exclusão de conta */
+#excluirConta {
+    background-color: #fbe4e6;
+    color: #d93025;
+}
+
+
+/* =====================================================
+   ESTADOS DE HOVER (FEEDBACK VISUAL)
+   -----------------------------------------------------
+   Leve alteração de fundo ao passar o mouse.
+===================================================== */
+#resetarInfo:hover {
+    background-color: #fbd5d0;
+}
+
+#excluirConta:hover {
+    background-color: #f7cdd1;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes para tablets e smartphones mantendo
+   hierarquia visual e conforto de toque.
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .titulo_infor {
+        font-size: 13px;
+    }
+
+    .informcoesUsuario p:last-child {
+        font-size: 15px;
+    }
+
+    #resetarInfo,
+    #excluirConta {
+        font-size: 14px;
+        padding: 13px;
+    }
+}
+
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .titulo_infor {
+        font-size: 12.5px;
+    }
+
+    .informcoesUsuario p:last-child {
+        font-size: 14px;
+    }
+
+    #resetarInfo,
+    #excluirConta {
+        width: 95%;
+        /* Aproveita melhor a largura no mobile */
+        font-size: 13.5px;
+        padding: 12px;
+    }
+}
+
+
+/* =====================================================
+   MODAL OVERLAY
+   -----------------------------------------------------
+   Camada de fundo escura exibida ao abrir
+   modais de confirmação (ex: excluir conta).
+===================================================== */
+.modal_overlay {
+    position: fixed;
+    inset: 0;
+    /* Top, right, bottom e left = 0 */
+    background: rgba(0, 0, 0, 0.45);
+    /* Escurece o fundo */
+    display: none;
+    /* Oculto por padrão */
+    align-items: center;
+    justify-content: center;
+    /* Centraliza o modal */
+    z-index: 9999;
+    /* Garante prioridade visual */
+    padding: 16px;
+    /* Evita encostar nas bordas em telas pequenas */
+}
+
+/* =====================================================
+   MODAL OVERLAY ATIVO
+   -----------------------------------------------------
+   Quando a classe "mostrar_modal" é adicionada,
+   o overlay passa de oculto para visível.
+===================================================== */
+.modal_overlay.mostrar_modal {
+    display: flex;
+    /* Exibe o modal e centraliza o conteúdo */
+}
+
+
+/* =====================================================
+   CAIXA DO MODAL
+   -----------------------------------------------------
+   Container principal do modal.
+   Responsável pelo layout, animação e aparência geral.
+===================================================== */
+.modal_box {
+    background: #ffffff;
+    /* Fundo branco do modal */
+    width: 90%;
+    /* Responsivo em telas pequenas */
+    max-width: 320px;
+    /* Limite em telas maiores */
+    border-radius: 16px;
+    /* Cantos arredondados */
+    padding: 22px;
+    /* Espaçamento interno */
+    text-align: center;
+    /* Centraliza o texto */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    /* Elevação visual */
+    animation: modalFade 0.25s ease;
+    /* Animação de entrada */
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+   -----------------------------------------------------
+   Ajustes para tablets e smartphones garantindo
+   conforto visual e de interação.
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .modal_box {
+        max-width: 340px;
+        /* Um pouco mais largo para leitura */
+        padding: 20px;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .modal_overlay {
+        padding: 12px;
+        /* Mais espaço nas laterais */
+    }
+
+    .modal_box {
+        width: 100%;
+        /* Ocupa largura total disponível */
+        max-width: none;
+        padding: 18px;
+        border-radius: 14px;
+    }
+}
+/* =====================================================
+   ANIMAÇÃO DE ENTRADA DO MODAL
+   -----------------------------------------------------
+   Combina fade + leve escala para suavizar
+   a aparição do modal na tela.
+===================================================== */
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        /* Invisível no início */
+        transform: scale(0.95);
+        /* Levemente menor */
+    }
+
+    to {
+        opacity: 1;
+        /* Totalmente visível */
+        transform: scale(1);
+        /* Tamanho final */
+    }
+}
+
+
+/* =====================================================
+   TEXTO DO MODAL
+   -----------------------------------------------------
+   Mensagem exibida ao usuário para confirmação
+   ou aviso de ação crítica.
+===================================================== */
+.modal_box p {
+    font-size: 15px;
+    color: #1f2933;
+    /* Texto principal */
+    margin-bottom: 20px;
+    /* Espaço antes dos botões */
+    line-height: 1.4;
+    /* Melhora leitura em telas pequenas */
+}
+
+
+/* =====================================================
+   CONTAINER DOS BOTÕES DO MODAL
+   -----------------------------------------------------
+   Agrupa os botões de ação (Cancelar / Confirmar).
+===================================================== */
+.modal_botoes {
+    display: flex;
+    /* Botões lado a lado */
+    gap: 12px;
+    /* Espaço entre eles */
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE DO MODAL
+   -----------------------------------------------------
+   Ajustes para garantir conforto visual e
+   melhor usabilidade em dispositivos móveis.
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .modal_box p {
+        font-size: 14px;
+        /* Texto levemente menor */
+    }
+
+    .modal_botoes {
+        gap: 10px;
+        /* Reduz espaçamento entre botões */
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .modal_box p {
+        font-size: 14px;
+        margin-bottom: 16px;
+        /* Ajuste de espaçamento vertical */
+    }
+
+    .modal_botoes {
+        flex-direction: column;
+        /* Botões empilhados para facilitar o toque */
+        gap: 10px;
+    }
+}
+
+/* =====================================================
+   BOTÕES DO MODAL (BASE)
+   -----------------------------------------------------
+   Estilo base compartilhado por ambos os botões.
+===================================================== */
+.modal_botoes button {
+    flex: 1;
+    /* Ambos ocupam a mesma largura */
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    /* Feedback visual suave */
+    font-size: 15px;
+    /* Tamanho base confortável */
+}
+
+
+/* =====================================================
+   BOTÃO CANCELAR
+   -----------------------------------------------------
+   Ação neutra, visualmente discreta.
+===================================================== */
+#modalCancelar {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+
+/* =====================================================
+   BOTÃO CONFIRMAR
+   -----------------------------------------------------
+   Ação principal ou destrutiva (ex: excluir conta).
+===================================================== */
+#modalConfirmar {
+    background: #f26b5b;
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   ESTADOS DE HOVER DOS BOTÕES
+   -----------------------------------------------------
+   Reforça interatividade ao passar o mouse.
+===================================================== */
+#modalCancelar:hover {
+    background: #e9ecef;
+}
+
+#modalConfirmar:hover {
+    background: #e8594f;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE DOS BOTÕES DO MODAL
+   -----------------------------------------------------
+   Ajustes para melhorar área de toque e
+   legibilidade em telas menores.
+===================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .modal_botoes button {
+        padding: 14px;
+        /* Aumenta área de toque */
+        font-size: 14px;
+        /* Texto levemente menor */
+    }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    .modal_botoes button {
+        width: 100%;
+        /* Botões ocupam largura total */
+        padding: 16px;
+        /* Área de toque otimizada */
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- Configura a responsividade para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importação do arquivo CSS responsável pelo layout da tela de login -->
+    <link rel="stylesheet" href="./style/login.css">
+
+    <!-- Título exibido na aba do navegador -->
+    <title>Login</title>
+
+    <!-- Biblioteca Font Awesome para utilização de ícones -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+</head>
+
+<body id="login">
+    <!-- =========================
+         CONTAINER DE ALERTAS
+         Utilizado para exibir mensagens dinâmicas
+         (erro, sucesso, validações, etc.)
+    ========================== -->
+    <div id="alert" class="alerta">
+        <span></span>
+    </div>
+
+    <!-- =========================
+         FORMULÁRIO DE LOGIN
+    ========================== -->
+    <form id="formulario_login" class="card-front" action="">
+
+        <!-- Container do título e identidade visual -->
+        <div id="container_titulo">
+            <!-- Ícone/logo do sistema -->
+            <div class="contaier_icon">
+                <img src="./icon/free-open-book-icon-GcZ1jjaipuEF-512x512.png" alt="">
+            </div>
+
+            <!-- Nome da aplicação -->
+            <h1>BookMatch</h1>
+
+            <!-- Slogan do sistema -->
+            <p>Encontre seu próximo amor literário</p>
+        </div>
+
+        <!-- Rótulo do campo de email -->
+        <label for="">Email</label>
+
+        <!-- Container do campo de email com ícone -->
+        <div id="input_email">
+            <!-- Ícone exibido à esquerda do input -->
+            <img src="./icon/mail.svg" alt="" class="icon_input_left">
+
+            <!-- Campo para inserção do email -->
+            <input type="email" name="" id="email_input" placeholder="seu@email.com">
+        </div>
+
+        <!-- Rótulo do campo de senha -->
+        <label for="">Senha</label>
+
+        <!-- Container do campo de senha -->
+        <div id="input_senha">
+            <!-- Ícone de cadeado -->
+            <i class="fa-solid fa-lock"></i>
+
+            <!-- Campo de senha -->
+            <input type="password" id="senha" placeholder="Digite a senha">
+
+            <!-- Ícone para mostrar/ocultar a senha (controlado via JavaScript) -->
+            <img src="./icon/eye.svg" id="toggleSenha" class="icon_input_right" alt="Mostrar senha">
+        </div>
+
+        <!-- Link para recuperação de senha -->
+        <div class="line_esqueceu">
+            <a href="">Esqueceu a senha?</a>
+        </div>
+
+        <!-- Container do botão de login -->
+        <div class="button_submit">
+            <button type="submit" class="button_login">Entrar</button>
+        </div>
+
+        <!-- Separador visual entre login tradicional e redes sociais -->
+        <div class="container_continuar">
+            <div class="line"></div>
+            <h3>ou continue com</h3>
+            <div class="line"></div>
+        </div>
+
+        <!-- Botões de login com redes sociais -->
+        <div class="container_button_redes">
+            <button class="redes_continuar">
+                <i class="fa-brands fa-google"></i>Google
+            </button>
+            <button class="redes_continuar">
+                <i class="fa-brands fa-facebook"></i>Facebook
+            </button>
+        </div>
+
+        <!-- Link para alternar para o formulário de cadastro -->
+        <div class="cadastrar">
+            <p>Não tem uma conta?</p>
+            <a href="#" id="btnCadastro">Cadastre-se</a>
+        </div>
+    </form>
+    <!-- ===== FIM DO FORMULÁRIO DE LOGIN ===== -->
+
+    <!-- =========================
+         FORMULÁRIO DE CADASTRO
+    ========================== -->
+    <form id="formulario_cadastro" class="card-back" action="">
+
+        <!-- Container do título e identidade visual -->
+        <div id="container_titulo">
+            <div class="contaier_icon">
+                <img src="./icon/free-open-book-icon-GcZ1jjaipuEF-512x512.png" alt="">
+            </div>
+            <h1>BookMatch</h1>
+            <p>Encontre seu próximo amor literário</p>
+        </div>
+
+        <!-- Rótulo do campo nome -->
+        <label for="">Nome</label>
+
+        <!-- Container do campo nome -->
+        <div id="input_senha">
+            <i class="fa-solid fa-signature"></i>
+
+            <!-- Campo para inserção do nome do usuário -->
+            <input type="password" id="nome" placeholder="Digite seu nome">
+        </div>
+
+        <!-- Rótulo do campo email -->
+        <label for="">Email</label>
+
+        <!-- Container do campo de email -->
+        <div id="input_email">
+            <img src="./icon/mail.svg" alt="" class="icon_input_left">
+            <input type="email" name="" id="email_input_cadastro" placeholder="seu@email.com">
+        </div>
+
+        <!-- Rótulo do campo senha -->
+        <label for="">Senha</label>
+
+        <!-- Container do campo de senha -->
+        <div id="input_senha">
+            <i class="fa-solid fa-lock"></i>
+
+            <!-- Campo de senha do cadastro -->
+            <input type="password" id="senha_cadastro" placeholder="Digite a senha">
+
+            <!-- Ícone para mostrar/ocultar a senha -->
+            <img src="./icon/eye.svg" id="toggleSenhaCadastro" class="icon_input_right" alt="Mostrar senha">
+        </div>
+
+        <!-- Botão de submissão do cadastro -->
+        <div class="button_submit">
+            <button type="submit" class="button_cadastro">Cadastrar</button>
+        </div>
+
+        <!-- Separador visual -->
+        <div class="container_continuar">
+            <div class="line"></div>
+            <h3>ou continue com</h3>
+            <div class="line"></div>
+        </div>
+
+        <!-- Botões de cadastro com redes sociais -->
+        <div class="container_button_redes">
+            <button class="redes_continuar">
+                <i class="fa-brands fa-google"></i>Google
+            </button>
+            <button class="redes_continuar">
+                <i class="fa-brands fa-facebook"></i>Facebook
+            </button>
+        </div>
+
+        <!-- Link para retornar ao login -->
+        <div class="cadastrar">
+            <p>Já possui conta?</p>
+            <a href="#" id="btnEntrar">Entrar</a>
+        </div>
+    </form>
+    <!-- ===== FIM DO FORMULÁRIO DE CADASTRO ===== -->
+
+    <!-- =========================
+         ÍCONES DECORATIVOS
+         Elementos apenas visuais
+    ========================== -->
+    <i id="icons_book1" class="fa-solid fa-book"></i>
+    <i id="icons_book2" class="fa-solid fa-book-atlas"></i>
+    <i id="icons_book3" class="fa-solid fa-book-open"></i>
+    <i id="icons_book4" class="fa-solid fa-book-open-reader"></i>
+    <i id="icons_book5" class="fa-solid fa-book-medical"></i>
+
+    <!-- Script responsável pelas interações da tela -->
+    <script src="./js/login.js"></script>
+</body>
+
+</html>

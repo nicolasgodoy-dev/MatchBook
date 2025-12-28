@@ -1,0 +1,406 @@
+/* =========================
+   RESET GLOBAL
+   Remove margens e paddings padrão
+   para evitar inconsistências entre navegadores
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =========================
+   FUNDO DA PÁGINA
+   Centraliza o conteúdo vertical e horizontalmente
+========================= */
+body {
+    height: 110vh; /* Ocupa toda a altura da viewport */
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    background-color: #FAF0EF;
+}
+
+/* =========================
+   FADE IN DA PÁGINA
+   Inicia invisível para efeito de entrada suave
+========================= */
+#login {
+    opacity: 0;
+    animation: fadeInPage 1.5s ease-out forwards;
+}
+
+/* Animação de entrada da página
+   - opacity cria o fade
+   - translateY cria um leve movimento vertical */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   ÍCONES FLUTUANTES DECORATIVOS
+   position:absolute permite espalhar pela tela
+========================= */
+#icons_book1,
+#icons_book2,
+#icons_book3,
+#icons_book4,
+#icons_book5 {
+    color: #E56A6E;
+    font-size: 50px;
+    position: absolute;
+}
+
+/* Cada ícone recebe uma posição fixa
+   e uma animação com tempo diferente
+   para evitar movimento sincronizado */
+#icons_book1 {
+    top: 10%;
+    left: 5%;
+    animation: floatUpDown 3s ease-in-out infinite;
+}
+
+#icons_book2 {
+    top: 50%;
+    left: 20%;
+    animation: floatUpDown 3.5s ease-in-out infinite;
+}
+
+#icons_book3 {
+    top: 70%;
+    left: 10%;
+    animation: floatUpDown 4s ease-in-out infinite;
+}
+
+#icons_book4 {
+    top: 10%;
+    right: 20%;
+    animation: floatUpDown 3.2s ease-in-out infinite;
+}
+
+/* Ícone com efeito de piscar suave */
+#icons_book5 {
+    top: 80%;
+    right: 5%;
+    animation: blinkSoft 5s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMAÇÃO DE FLUTUAÇÃO
+   Cria o efeito de subir e descer
+========================= */
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Sobe levemente */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   ANIMAÇÃO DE PISCAR
+   Controla apenas a opacidade
+========================= */
+@keyframes blinkSoft {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   ALERTA FLUTUANTE
+   position: fixed mantém o alerta visível
+   mesmo ao rolar a página
+========================= */
+.alerta {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    z-index: 99; /* Garante que fique acima dos outros elementos */
+
+    background: #E66C5B;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    opacity: 0;                /* Invisível por padrão */
+    pointer-events: none;      /* Não bloqueia cliques */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estado visível do alerta
+    ativado via JavaScript */
+.alerta.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================
+   FORMULÁRIOS (LOGIN E CADASTRO)
+   Estilo de card centralizado
+========================= */
+#formulario_login,
+#formulario_cadastro {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    background-color: #FEFAFA;
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgba(81, 81, 81, 0.26);
+    padding: 10px;
+}
+
+/* Controle de visibilidade
+   Apenas um formulário aparece por vez */
+#formulario_login {
+    display: flex;
+}
+
+#formulario_cadastro {
+    display: none;
+}
+
+/* =========================
+   TÍTULO E IDENTIDADE VISUAL
+========================= */
+#container_titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container do ícone */
+.contaier_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    background: linear-gradient(
+        140deg,
+        rgba(231, 109, 86, 1) 0%,
+        rgba(229, 106, 104, 1) 50%,
+        rgba(228, 104, 117, 1) 100%
+    );
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Ícone branco usando filtro */
+.contaier_icon img {
+    width: 50px;
+    filter: brightness(0) invert(1);
+}
+
+/* =========================
+   LABELS
+========================= */
+label {
+    margin: 10px;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.582);
+}
+
+/* =========================
+   INPUT EMAIL
+   position: relative permite posicionar ícones
+========================= */
+#input_email {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+#input_email input {
+    width: 70%;
+    padding: 14px 45px; /* Espaço reservado para os ícones */
+    border-radius: 30px;
+    border: 1px solid #e5e5e5;
+    background: #faf7f3;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Ícone do email */
+#input_email img {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: brightness(0) saturate(100%) invert(45%);
+}
+
+/* =========================
+   INPUT SENHA
+   Mesmo conceito do email
+========================= */
+#input_senha {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+#input_senha input {
+    width: 70%;
+    padding: 14px 45px;
+    border-radius: 30px;
+    border: 1px solid #e5e5e5;
+    background: #faf7f3;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Ícone à esquerda */
+#input_senha i {
+    position: absolute;
+    left: 9%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+/* Ícone de mostrar/ocultar senha */
+.icon_input_right {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 22px;
+    filter: brightness(0) saturate(100%) invert(45%);
+}
+
+/* =========================
+   ESQUECEU A SENHA
+========================= */
+.line_esqueceu {
+    padding: 1rem 1.5rem;
+    text-align: end;
+}
+
+.line_esqueceu a {
+    text-decoration: none;
+    color: #E76E50;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.button_submit {
+    display: flex;
+    justify-content: center;
+}
+
+.button_login,
+.button_cadastro {
+    width: 70%;
+    background-color: #E56A6E;
+    padding: 0.5rem 2.5rem;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+
+.button_cadastro {
+    margin-top: 10px;
+}
+
+/* =========================
+   CONTINUAR COM REDES
+========================= */
+.container_continuar {
+    margin-top: 10px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.line {
+    width: 20%;
+    height: 1px;
+    background-color: #666;
+}
+
+.container_continuar h3 {
+    font-size: 15px;
+    color: #666;
+}
+
+/* =========================
+   BOTÕES DE REDES SOCIAIS
+========================= */
+.container_button_redes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.redes_continuar {
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover: elevação e destaque visual */
+.redes_continuar:hover {
+    background-color: #E66C5B;
+    border-radius: 10px;
+    color: white;
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* =========================
+   LINK DE CADASTRO
+========================= */
+.cadastrar {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cadastrar p {
+    color: #666;
+}
+
+
+
+.cadastrar a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #E66C5B;
+}

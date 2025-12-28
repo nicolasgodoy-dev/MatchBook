@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- =========================
+         CONFIGURAÇÕES BÁSICAS
+    ========================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Home</title>
+
+    <!-- Biblioteca de ícones Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+
+    <!-- Arquivo CSS principal da página Home -->
+    <link rel="stylesheet" href="../style/home.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOGO / IDENTIDADE VISUAL
+    ========================== -->
+    <div class="container_logo">
+
+        <!-- Ícones que compõem o logotipo -->
+        <div class="logo">
+            <i class="fa-solid fa-book-open" id="book_logo"></i>
+            <i class="fa-solid fa-heart" id="heart_logo"></i>
+        </div>
+
+        <!-- Nome da aplicação -->
+        <h1 class="titulo_normal">Match</h1>
+        <h1 class="titulo_color">Book</h1>
+    </div>
+
+    <!-- =========================
+         MENU DE NAVEGAÇÃO
+         Controla a troca entre telas
+    ========================== -->
+    <div class="container_nav">
+        <nav class="itens_nav">
+            <ul>
+
+                <!-- Item ativo (tela inicial) -->
+                <li id="Match" class="ativo">
+                    <div class="icon_nav">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+                    Match
+                </li>
+
+                <!-- Navegação para Biblioteca -->
+                <li id="Biblioteca">
+                    <div class="icon_nav">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    Biblioteca
+                </li>
+
+                <!-- Navegação para Perfil -->
+                <li id="Perfil">
+                    <div class="icon_nav">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    Perfil
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <!-- =========================
+         TELA MATCH (PRINCIPAL)
+         Sistema de curtida / dislike
+    ========================== -->
+    <div id="containerMatch" class="container exibida">
+
+        <!-- Ícones visuais de feedback (arraste / ação) -->
+        <div id="dontlike_icon">
+            <i class="fa-solid fa-x"></i>
+        </div>
+
+        <div id="like_icon">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+
+        <!-- Card principal do livro -->
+        <div id="box_match">
+
+            <!-- Capa do livro -->
+            <div id="img_box">
+                <!-- draggable=false evita arrastar a imagem -->
+                <img src="" alt="Capa do livro" draggable="false">
+            </div>
+
+            <!-- Informações do livro -->
+            <div id="info">
+
+                <!-- Título do livro -->
+                <h1 id="titulo_livro">Título do Livro</h1>
+
+                <!-- Informações complementares -->
+                <div class="meta">
+                    <span id="autor_livro">Autor</span>
+                    <span class="dot">•</span>
+                    <span id="ano_livro">Ano</span>
+                </div>
+
+                <!-- Tags de categorização -->
+                <div class="tags">
+                    <span id="genero_livro" class="tag genero">Gênero</span>
+                    <span id="categoria_livro" class="tag categoria">Categoria</span>
+                </div>
+
+                <!-- Descrição do livro -->
+                <div class="descricao">
+                    <p id="descricao_livro">
+                        Descrição do livro
+                    </p>
+                </div>
+
+                <!-- Botões de interação -->
+                <div class="buttons">
+
+                    <!-- Botão de dislike -->
+                    <button id="notlike" class="button_circle">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <!-- Botão de like -->
+                    <button id="like" class="button_circle">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela exibida ao final da lista de livros -->
+        <div id="box_end">
+            <div class="end_icon"></div>
+            <h1>Chegou ao fim</h1>
+            <button id="resetarlista">Resetar</button>
+        </div>
+    </div>
+
+    <!-- =========================
+         TELA BIBLIOTECA
+         Histórico de interações
+    ========================== -->
+    <div id="containerBiblioteca" class="container">
+
+        <div class="historico_pesquisa">
+
+            <!-- Campo de busca -->
+            <input
+                id="search_input"
+                type="text"
+                placeholder="buscar por titulo, autor ou categoria...">
+
+            <!-- Filtros de curtidos e não curtidos -->
+            <div class="select_buttons_filter">
+                <button id="filter_curtidos" class="filter selecionado">
+                    Curtidos (0)
+                </button>
+                <button id="filter_naocurtidos" class="filter">
+                    Dislike (0)
+                </button>
+            </div>
+
+            <!-- Área dinâmica onde os cards são inseridos via JavaScript -->
+            <div id="cards_resultados"></div>
+        </div>
+    </div>
+
+    <!-- =========================
+         TELA PERFIL
+         Informações do usuário
+    ========================== -->
+    <div id="containerPerfil" class="container">
+
+        <!-- Dados principais do usuário -->
+        <div class="cards_perfil">
+            <div class="circle_user">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div id="infoUsuario">
+                <p id="nameUser">User</p>
+                <p id="EmailUser">user25@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Estatísticas do usuário -->
+        <div class="cards_perfil">
+            <div class="circle_icon_perfil">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="informcoesUsuario">
+                <p class="titulo_infor">Categoria mais curtida</p>
+                <p id="Categoriafavorita"></p>
+            </div>
+        </div>
+
+        <div class="cards_perfil">
+            <div class="circle_icon_perfil">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="informcoesUsuario">
+                <p class="titulo_infor">Total de curtidas</p>
+                <p id="Totalcurtidas"></p>
+            </div>
+        </div>
+
+        <div class="cards_perfil">
+            <div class="circle_icon_perfil"></div>
+            <div class="informcoesUsuario">
+                <p class="titulo_infor">Categoria menos curtida</p>
+                <p id="categoriaMenoscurtida"></p>
+            </div>
+        </div>
+
+        <div class="cards_perfil">
+            <div class="circle_icon_perfil"></div>
+            <div class="informcoesUsuario">
+                <p class="titulo_infor">Total de dislikes</p>
+                <p id="Totaldedislike"></p>
+            </div>
+        </div>
+
+        <!-- Ações do usuário -->
+        <button id="resetarInfo">Resetar visualizações</button>
+        <button id="excluirConta">Excluir Conta</button>
+    </div>
+
+    <!-- =========================
+         MODAL DE CONFIRMAÇÃO
+         Usado para ações críticas
+    ========================== -->
+    <div id="modalConfirmacao" class="modal_overlay">
+        <div class="modal_box">
+            <p id="modalMensagem"></p>
+
+            <div class="modal_botoes">
+                <button id="modalCancelar">Cancelar</button>
+                <button id="modalConfirmar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+         SCRIPTS
+         Lógica e dados da aplicação
+    ========================== -->
+    <script src="../backend/dados.js"></script>
+    <script src="../backend/app.js"></script>
+
+</body>
+</html>
